@@ -10,12 +10,6 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "options_page": "src/options_custom/index.html",
-  "page_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "page action",
-    "default_popup": "src/page_action/page_action.html"
-  },
   "permissions": [
     "contentSettings",
     "https://www.youtube.com/*"
@@ -23,7 +17,6 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.google.com/*",
         "http://*.youtube.com/*",
         "https://*.youtube.com/*"
       ],
