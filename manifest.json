@@ -10,9 +10,10 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
+  "options_page": "src/options/options.html",
   "permissions": [
     "contentSettings",
-    "https://www.youtube.com/*"
+    "storage"
   ],
   "content_scripts": [
     {

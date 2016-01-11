@@ -3,7 +3,7 @@ this.manifest = {
     "icon": "icon.png",
     "settings": [
         {
-            "tab": i18n.get("information"),
+            "tab": i18n.get("wheel"),
             "group": i18n.get("config"),
             "name": "chambers",
             "type": "text",
