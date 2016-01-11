@@ -12,8 +12,14 @@ chrome.extension.sendMessage({}, function(response) {
                     // check to see if this page contains a video
                     if(document.getElementsByTagName("video").length>0) {
                         // spin the chamber...
-                        var pinHit = Math.floor(Math.random() * data.chambers);
-                        console.log("Chamber count: " + data.chambers);
+                        var chamberCount = config.chamberCount;
+                        if(data.override) {
+                            chamberCount = data.chambers;
+                        }
+                        console.log("Chamber count (server): " + config.chamberCount);
+                        console.log("Chamber count (local): " + data.chambers);
+                        console.log("Chamber count: " + chamberCount);
+                        var pinHit = Math.floor(Math.random() * chamberCount);
                         console.log("Fired a " + pinHit);
                         // fire!
                         if(pinHit != 0) {
@@ -30,9 +36,8 @@ chrome.extension.sendMessage({}, function(response) {
         }
 	}, 10);
 
-
     var rickRoll = function() {
-        document.getElementsByTagName("video")[0].setAttribute("src", config.rick_roll_url);
+        document.getElementsByTagName("video")[0].setAttribute("src", config.rickRollURL);
     };
 
     var getJSON = function(url) {
