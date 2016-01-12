@@ -2,7 +2,7 @@
 A chrome extension which will randomly redirect youtube views to a Rick Roll video.
 
 ![Roulette Wheel with Rick Astley's Head Inside][logo]
-[logo]: https://raw.githubusercontent.com/ben174/rick-roulette/master/icons/icon256.png
+[logo]: https://raw.githubusercontent.com/ben174/rick-roulette/master/extension/icons/icon256.png
 
 Are you a glutton for punishment? Or do you secretly love being Rick Rolled?
 No judgement here, but this extension might come in handy for you!
