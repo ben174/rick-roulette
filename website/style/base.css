@@ -102,3 +102,35 @@ button {
     font-weight: bold;
     font-size: 18px;
 }
+
+#footer {
+    line-height: 20px;
+
+}
+
+#footer ul>li {
+    display: inline;
+    font-size: 10px;
+    margin-top: 20px;
+}
+
+#footer ul>li:before {
+}
+
+#footer ul:first-child:before {
+    content: "";
+}
+
+#footer a {
+    color: #BCECB9;
+    text-decoration: none;
+}
+
+#footer a:visited {
+    color: #BCECB9;
+}
+
+#footer a:hover {
+    color: #FAFFF4;
+    text-decoration: underline;
+}
