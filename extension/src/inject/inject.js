@@ -4,11 +4,9 @@ chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
         if (document.readyState === "complete") {
             clearInterval(readyStateCheckInterval);
-            var configURL = 'https://mn8qel1j6c.execute-api.us-east-1.amazonaws.com/prod/getConfig'
-            getJSON(configURL).then(function(data) {
-                config = JSON.parse(data);
+            var configURL = '//s3-us-west-1.amazonaws.com/www.rickroulette.com/config.json';
+            getJSON(configURL).then(function(config) {
                 chrome.storage.sync.get(["chambers","override"], function(data) {
-                    console.log(data);
                     // check to see if this page contains a video
                     if(document.getElementsByTagName("video").length>0) {
                         // spin the chamber...
