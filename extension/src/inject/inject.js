@@ -5,7 +5,8 @@ chrome.extension.sendMessage({}, function(response) {
         if (document.readyState === "complete") {
             clearInterval(readyStateCheckInterval);
             var configURL = '//s3-us-west-1.amazonaws.com/www.rickroulette.com/config.json';
-            getJSON(configURL).then(function(config) {
+            getJSON(configURL).then(function(data) {
+                config = data;
                 chrome.storage.sync.get(["chambers","override"], function(data) {
                     // check to see if this page contains a video
                     if(document.getElementsByTagName("video").length>0) {
