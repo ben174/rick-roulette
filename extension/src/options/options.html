@@ -5,24 +5,27 @@
   </head>
 <body>
 
-<h1>Configuration</h1>
+  <div id="banner">
+    <h1>Rick Roulette - Configuration</h1>
+  </div>
 
-<label>
-  <b>Number of Chambers</b><br />
-  <i>(lower number = higher chances of a Rick Roll)</i><br />
-  <input type="text" id="chambers" disabled="disabled">
-</label>
+  <div id="config">
+    <label for="chambers">
+      <b>Number of Chambers</b><br />
+      <i>(lower number = higher chances of a Rick Roll)</i><br />
+    </label>
+    <input type="text" id="chambers" disabled="disabled">
 
-<label>
-  <input type="checkbox" id="default" checked>
-  Use Default Value
-</label>
+    <label>
+      <input type="checkbox" id="default" checked>
+      Use Default Value
+    </label>
 
-<div id="status"></div>
-<button id="save">Save</button>
+    <div id="status"></div>
+    <button id="save">Save</button>
+  </div>
 
-<script src="options.js"></script>
-<link rel="stylesheet" href="options.css">
-
+  <script src="options.js"></script>
+  <link rel="stylesheet" href="options.css">
 </body>
 </html>
