@@ -11,7 +11,7 @@ chrome.extension.sendMessage({}, function(response) {
 	}, 10);
 
     var rickRoll = function() {
-        document.getElementsByTagName("video")[0].setAttribute("src", config.rickRollURL);
+        document.getElementsByTagName("video")[0].setAttribute("src", serverConfig.rickRollURL);
     };
 
     var fireTrigger = function() {
@@ -20,10 +20,10 @@ chrome.extension.sendMessage({}, function(response) {
             // spin the chamber...
             var chamberCount = serverConfig.chamberCount;
             if(localConfig.override) {
-                chamberCount = localConfig.chambers;
+                chamberCount = localConfig.chamberCount;
             }
             console.log("Chamber count (server): " + serverConfig.chamberCount);
-            console.log("Chamber count (local): " + localConfig.chambers);
+            console.log("Chamber count (local): " + localConfig.chamberCount);
             console.log("Chamber count: " + chamberCount);
             var pinHit = Math.floor(Math.random() * chamberCount);
             console.log("Fired a " + pinHit);
@@ -56,7 +56,7 @@ chrome.extension.sendMessage({}, function(response) {
     };
     var getLocalConfig = function() {
         return new Promise(function(resolve, reject) {
-            chrome.storage.sync.get(["chambers","override"], function(data) {
+            chrome.storage.sync.get(["chamberCount","override"], function(data) {
                 localConfig = data;
                 resolve();
             });
