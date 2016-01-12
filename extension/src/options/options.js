@@ -2,12 +2,17 @@ function init() {
     restore_options()
     document.getElementById('save').addEventListener('click', save_options);
     document.getElementById('default').addEventListener('click', defaultChanged);
+    document.getElementById('chambers').addEventListener('keypress', chamberKeyPress);
 }
 
 // Saves options to chrome.storage
 function save_options() {
     var chambers = document.getElementById('chambers').value;
     var override = !document.getElementById('default').checked;
+    if(chambers=='0') {
+        // they probably mean 1
+        chambers = 1;
+    }
     chrome.storage.sync.set({
         chamberCount: chambers,
         override: override
@@ -39,6 +44,14 @@ function restore_options() {
 function defaultChanged() {
     var isDefault = document.getElementById('default').checked;
     document.getElementById('chambers').disabled = isDefault;
+}
+
+function chamberKeyPress(event) {
+    console.log('keypress');
+    console.log(event);
+    if (!(event.charCode >= 48 && event.charCode <= 57)) {
+        event.preventDefault();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
