@@ -1,6 +1,6 @@
 {
   "name": "Rick Roulette",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "manifest_version": 2,
   "description": "Randomly replaces youtube videos with Rick Rolls.",
   "homepage_url": "http://www.bugben.com",
