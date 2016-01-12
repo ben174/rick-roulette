@@ -8,8 +8,6 @@ chrome.extension.sendMessage({}, function () {
         return;
     }
 
-
-
     var serverConfig = null,
         localConfig = null,
         currUrl = document.location.href,
@@ -46,7 +44,6 @@ chrome.extension.sendMessage({}, function () {
         rickRoll = function () {
             document.getElementsByTagName("video")[0].setAttribute("src", serverConfig.rickRollURL);
         },
-
 
         fireTrigger = function () {
             currUrl = document.location.href;
@@ -87,5 +84,4 @@ chrome.extension.sendMessage({}, function () {
                 Promise.all([getServerConfig(), getLocalConfig()]).then(fireTrigger);
             }
         }, 10);
-
 });
