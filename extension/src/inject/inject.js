@@ -8,12 +8,12 @@ chrome.extension.sendMessage({}, function(response) {
     var localConfig = null;
     var serverConfigURL = '//s3-us-west-1.amazonaws.com/www.rickroulette.com/config.json';
 
-	var readyStateCheckInterval = setInterval(function() {
+    var readyStateCheckInterval = setInterval(function() {
         if (document.readyState === "complete") {
             clearInterval(readyStateCheckInterval);
             Promise.all([getServerConfig(), getLocalConfig()]).then(fireTrigger);
         }
-	}, 10);
+    }, 10);
 
     var rickRoll = function() {
         document.getElementsByTagName("video")[0].setAttribute("src", serverConfig.rickRollURL);
