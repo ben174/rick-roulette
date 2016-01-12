@@ -8,9 +8,13 @@ chrome.extension.sendMessage({}, function () {
         return;
     }
 
+
+
     var serverConfig = null,
         localConfig = null,
+        currUrl = document.location.href,
         serverConfigURL = '//s3-us-west-1.amazonaws.com/www.rickroulette.com/config.json',
+        rollDelay = 5000,
 
         getServerConfig = function () {
             return new Promise(function (resolve, reject) {
@@ -45,29 +49,40 @@ chrome.extension.sendMessage({}, function () {
 
 
         fireTrigger = function () {
+            currUrl = document.location.href;
             // check to see if this page contains a video
             if (document.getElementsByTagName("video").length > 0) {
                 // spin the chamber...
                 var chamberCount = localConfig.override ? localConfig.chamberCount : serverConfig.chamberCount,
-                    pinHit = Math.floor(Math.random() * chamberCount);
+                    pinHit = Math.floor(Math.random() * chamberCount),
+                    bulletChamber = Math.floor(Math.random() * chamberCount);
 
                 console.log("Chamber count (server): " + serverConfig.chamberCount);
                 console.log("Chamber count (local): " + localConfig.chamberCount);
                 console.log("Chamber count: " + chamberCount);
+                console.log("Bullet in chamber: " + bulletChamber);
                 console.log("Fired a " + pinHit);
                 // fire!
-                if (pinHit !== 0) {
+                if (pinHit !== bulletChamber) {
                     // click...
-                    console.log("click...");
+                    console.log("Click...");
                 } else {
                     // BANG!
-                    setTimeout(rickRoll, 5000);
+                    console.log("BANG!");
+                    setTimeout(rickRoll, rollDelay);
                 }
+            }
+        },
+
+        watchUrl = function () {
+            if (currUrl !== document.location.href) {
+                fireTrigger();
             }
         },
 
         readyStateCheckInterval = setInterval(function () {
             if (document.readyState === "complete") {
+                window.setInterval(watchUrl, 1000);
                 clearInterval(readyStateCheckInterval);
                 Promise.all([getServerConfig(), getLocalConfig()]).then(fireTrigger);
             }
