@@ -1,8 +1,12 @@
 body {
     text-align: center;
-    font-family: Sans-serif;
     background-color: #FAFFF4;
     color: #030;
+    font-family: 'Josefin Sans', sans-serif;
+}
+p {
+    font-family: Sans-serif;
+
 }
 #wheel-container {
     text-align:center;
@@ -60,34 +64,37 @@ html, body {
 }
 h1 {
     color: #242;
+    font-size: 300%;
+    margin-top: 15px;
 
 }
 h2, h3 {
+    color: #464;
     text-align: center;
 }
 h3 {
-    color: #353;
     margin-top: 40px;
     margin-bottom: 10px;
+    font-size: 24px;
 }
 h2 {
-    color: #464;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 23px;
 }
 #content {
     text-align: left;
     margin: 10px;
     padding: 3% 16%;
-    margin-top: -40px;
+    margin-top: -65px;
+    padding-bottom: 10px;
 }
 p {
     line-height: 1.8em;
     margin-bottom: 20px;
 }
 button {
-    border: solid 1px #EFE;
+    border: solid 1px #BCB;
     background-color: #CDC;
     padding: 15px;
     border-radius: 9px;
