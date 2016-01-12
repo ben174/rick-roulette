@@ -1,4 +1,9 @@
 chrome.extension.sendMessage({}, function(response) {
+    if(!window.location.hostname=='www.youtube.com') {
+        // youtube only, for now
+        return;
+    }
+
     var serverConfig = null;
     var localConfig = null;
     var serverConfigURL = '//s3-us-west-1.amazonaws.com/www.rickroulette.com/config.json';
