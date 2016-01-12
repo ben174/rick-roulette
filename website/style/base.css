@@ -1,0 +1,97 @@
+body {
+    text-align: center;
+    font-family: Sans-serif;
+    background-color: #FAFFF4;
+    color: #030;
+}
+#wheel-container {
+    text-align:center;
+}
+#wheel {
+    position: relative;
+    min-height: 400px;
+}
+#wheel img {
+    position: absolute;
+    top: 0px;
+    width: 350px;
+    margin-left: -175px;
+}
+#numbers {
+    animation-name: spin;
+    animation-duration: 20000ms;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(1800deg);}
+}
+* {
+    margin:0;padding:0;
+}
+html, body {
+    height: 100%;
+}
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow:auto;
+    padding-bottom: 80px;
+}  /* must be same height as the footer */
+
+#footer {
+    position: relative;
+    margin-top: -80px; /* negative value of footer height */
+    height: 80px;
+    clear:both;
+    background-color: #686;
+    text-align: center;
+    padding-top: 20px;
+    color: #EFE;
+}
+.banner {
+    background-color: #CDC;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-bottom: solid 2px #ABA;
+}
+h1 {
+    color: #242;
+
+}
+h2, h3 {
+    text-align: center;
+}
+h3 {
+    color: #353;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+h2 {
+    color: #464;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#content {
+    text-align: left;
+    margin: 10px;
+    padding: 3% 16%;
+    margin-top: -40px;
+}
+p {
+    line-height: 1.8em;
+    margin-bottom: 20px;
+}
+button {
+    border: solid 1px #EFE;
+    background-color: #CDC;
+    padding: 15px;
+    border-radius: 9px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 18px;
+}
