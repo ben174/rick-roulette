@@ -8,6 +8,7 @@ chrome.extension.sendMessage({}, function () {
         return;
     }
 
+
     var serverConfig = null,
         localConfig = null,
         currUrl = document.location.href,
@@ -42,7 +43,19 @@ chrome.extension.sendMessage({}, function () {
         },
 
         rickRoll = function () {
-            document.getElementsByTagName("video")[0].setAttribute("src", serverConfig.rickRollURL);
+            var video = document.getElementsByTagName("video")[0]
+            video.setAttribute("src", serverConfig.rickRollURL);
+            var canvas = document.createElement('canvas');
+            canvas.setAttribute("id", "rr-static");
+            canvas.setAttribute("style", "position: relative; top: 0px; left: 0px; z-index: 100");
+            document.getElementById('player').appendChild(canvas);
+            var v = document.getElementsByTagName('video')[0];
+            canvas.style.width = v.style.width;
+            canvas.style.height = v.style.height;
+            console.log("dims");
+            console.log(canvas.style.width);
+            console.log(canvas.style.height);
+            makeStatic(v);
         },
 
         fireTrigger = function () {
@@ -85,3 +98,45 @@ chrome.extension.sendMessage({}, function () {
             }
         }, 10);
 });
+
+// borrowed from http://jsfiddle.net/AbdiasSoftware/dEya9/website
+
+var canvas = null,
+    ctx = null, 
+    video = null;
+
+
+function makeStatic(v) {
+    video = v;
+    canvas = document.getElementById('rr-static');
+    ctx = canvas.getContext('2d');
+    // closer to analouge appearance
+    // added toggle to get 30 FPS instead of 60 FPS
+    (function loop() {
+        toggle = !toggle;
+        if (toggle) {
+            requestAnimationFrame(loop);
+            return;
+        }
+        noise(ctx);
+        requestAnimationFrame(loop);
+    })();
+}
+
+
+function noise(ctx) {
+    var w = ctx.canvas.width,
+        h = ctx.canvas.height,
+        idata = ctx.createImageData(w, h),
+        buffer32 = new Uint32Array(idata.data.buffer),
+        len = buffer32.length,
+        i = 0;
+
+    for(; i < len;)
+        buffer32[i++] = ((255 * Math.random())|0) << 24;
+    
+    ctx.putImageData(idata, 0, 0);
+}
+
+var toggle = true;
+
