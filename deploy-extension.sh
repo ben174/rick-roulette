@@ -4,3 +4,4 @@ find . -name "*.un~" -exec rm -rf {} \;
 zip -r rick-roulette.zip extension/* -x "*.DS_Store"
 
 #TODO: Figure out how to deploy to chrome developer dashboard via api
+#      perhaps: https://github.com/gorhill/uBlock/blob/master/dist/chromium/publish-beta.py
